@@ -20,25 +20,33 @@ async function displayPhotographerInfo() {
 
     // Affichage des infos du photographe
     const photographerInfoDiv = document.querySelector(".photographer_info");
-    const picture = `assets/photographers/${photographer.portrait}`;
     photographerInfoDiv.innerHTML = `
-        <h1>${photographer.name}</h1>
-        <p>${photographer.city}, ${photographer.country}</p>
-        <p>${photographer.tagline}</p>
-        <p>Prix: ${photographer.price}€/jour</p>
-        <img src="${picture}" alt="${photographer.name}">
+    <article class="media_article">
+            <h1>${photographer.name}</h1>
+            <p>${photographer.city}, ${photographer.country}</p>
+            <p>${photographer.tagline}</p>
+    </article>
+    `;
+
+    {/* <p>Prix: ${photographer.price}€/jour</p> */}
+
+    // Affichage de la photo de profil du photographe
+    const photographerInfoImgDiv = document.querySelector(".photographer_imgprofil");
+    const picture = `assets/photographers/${photographer.portrait}`;
+    photographerInfoImgDiv.innerHTML = `
+    <img src="${picture}" alt="${photographer.name}">
     `;
 
     // Affichage des médias du photographe
     const mediaGalleryDiv = document.querySelector(".photographer_media");
     mediaGalleryDiv.innerHTML = media.map(item => `
-        <div class="media-item">
+        <article class="media-item">
             <img src="${item.image}" alt="${item.title}">
             <p>${item.title}</p>
             <p>Likes: ${item.likes}</p>
             <p>Date: ${item.date}</p>
             <p>Price: ${item.price}€</p>
-        </div>
+        </article>
     `).join('');
 }
 

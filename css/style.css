@@ -45,21 +45,21 @@ h1 {
 
 .photographer_section article .p_location {
     color: #901C1C;
-    font-size: 13px;
+    font-size: 1.5em;
 }
 
 .photographer_section article .p_tagline {
-    font-size: 10px;
+    font-size: 1em;
 }
 
 .photographer_section article .p_price {
     color: #757575;
-    font-size: 9px;
+    font-size: 1em;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 2.3em;
     margin-bottom: 0px;
 }
 
@@ -73,4 +73,40 @@ h1 {
 .photographer_section article a {
     text-decoration: none;
     text-align: center;
+}
+
+/*** Modifications page photoghraphes ***/
+/* Modifications infos photographes */
+.photographer_imgprofil img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.media_article {
+    
+}
+
+.photograph-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.media_article h1 {
+    color: #D3573C;
+    font-size: 4em;
+    margin-bottom: 12px;
+}
+
+.media_article :nth-child(2) {
+    color: #901C1C;
+    font-size: 1.5em;
+    margin-top: 0px;
+}
+
+.media_article :nth-child(3) {
+    color: #525252;
+    font-size: 1.2em;
 }

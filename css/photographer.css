@@ -74,3 +74,110 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/*** Modifications page photoghraphes ***/
+/* Modifications infos photographes */
+.photographer_imgprofil img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100px;
+}
+
+.photograph-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.media_article h1 {
+    color: #D3573C;
+    font-size: 4em;
+    margin-bottom: 12px;
+}
+
+.media_article :nth-child(2) {
+    color: #901C1C;
+    font-size: 1.5em;
+    margin-top: 0px;
+}
+
+.media_article :nth-child(3) {
+    color: #525252;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Modifications menu de tri */
+.div_menu_tri {
+    display: flex;
+    margin: 20px 0px 50px 0px;
+}
+
+.div_menu_tri p {
+    margin-right: 20px;
+    font-weight: 700;
+}
+
+.menu_tri {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    position: relative;
+    cursor: pointer;
+    background-color: #901C1C;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.menu-item > a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    background-color: #901C1C;
+    color: #fff;
+}
+
+.menu-item:hover > .submenu {
+    display: block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #901C1C;
+}
+
+.submenu-item > a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: #fff;
+}
+
+.submenu-item > a:hover {
+    background-color: #901C1C;
+}
+
+/* Modifications médias photographes */
+.photographer_media {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    text-align: center;
+}
+
+.media-item img {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+}

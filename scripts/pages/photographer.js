@@ -41,13 +41,19 @@ async function displayPhotographerInfo() {
     const mediaGalleryDiv = document.querySelector(".photographer_media");
     mediaGalleryDiv.innerHTML = media.map(item => `
         <article class="media-item">
-            <img src="${item.image}" alt="${item.title}">
+            <img src="assets/images/${photographer.id}/${item.image}" alt="${item.title}">
             <p>${item.title}</p>
             <p>Likes: ${item.likes}</p>
-            <p>Date: ${item.date}</p>
-            <p>Price: ${item.price}€</p>
         </article>
     `).join('');
+
+    {/* <video controls>
+        <source src="assets/images/${photographer.id}/${item.video}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> */}
+
+    {/* <p>Date: ${item.date}</p>
+    <p>Price: ${item.price}€</p> */}
 }
 
 // Appelle de la fonction pour afficher les informations du photographe lorsque la page a fini de charger

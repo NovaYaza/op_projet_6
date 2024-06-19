@@ -119,52 +119,32 @@ form input {
     font-weight: 700;
 }
 
-.menu_tri {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+form {
+    max-width: 300px;
+    margin: 0 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
-.menu-item {
-    position: relative;
-    cursor: pointer;
-    background-color: #901C1C;
-    color: #fff;
-    border-radius: 5px;
+label {
+    font-size: 1em;
+    margin-bottom: 10px;
+    display: block;
 }
 
-.menu-item > a {
-    text-decoration: none;
+select {
+    width: 100%;
     padding: 10px;
-    display: block;
-    background-color: #901C1C;
-    color: #fff;
+    font-size: 1em;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.menu-item:hover > .submenu {
-    display: block;
-}
-
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: #901C1C;
-}
-
-.submenu-item > a {
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    color: #fff;
-}
-
-.submenu-item > a:hover {
-    background-color: #901C1C;
+select:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 /* Modifications médias photographes */

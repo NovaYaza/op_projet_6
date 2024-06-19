@@ -14,8 +14,15 @@ async function displayPhotographerInfo() {
     const photographerId = getPhotographerIdFromURL();
     const data = await fetchData();
 
-    // Filtrer les informations et les médias du photographe
+    // Filtrer les informations du photographe
     const photographer = data.photographers.find(p => p.id == photographerId);
+    if (!photographer) {
+        // Si le photographe n'est pas trouvé retour sur la page d'accueil
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // Filtrer les médias du photographe
     const media = data.media.filter(m => m.photographerId == photographerId);
 
     // Affichage des infos du photographe

@@ -19,16 +19,16 @@
         <div class="photographer_imgprofil"></div>
       </div>
       <div class="div_menu_tri">
-        <p>Trier par</p>
-        <ul class="menu_tri">
-          <li class="menu-item">
-              Popularité <i class="fa-solid fa-chevron-down"></i>
-              <ul class="submenu">
-                  <li class="submenu-item"><a href="#">Date</a></li>
-                  <li class="submenu-item"><a href="#">Titre</a></li>
-              </ul>
-          </li>
-      </ul>
+        <form>
+          <label for="menu_tri">
+            Trier par
+          </label>
+          <select id="menu_tri" name="menu_tri">
+            <option value="popularite" selected>Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+        </select>
+      </form>
       </div>
       <div class="photographer_media"></div>
     </main>

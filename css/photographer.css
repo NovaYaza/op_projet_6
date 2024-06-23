@@ -119,45 +119,70 @@ form input {
     font-weight: 700;
 }
 
-form {
-    max-width: 300px;
+.form_menu_tri {
+    max-width: 340px;
     margin: 0 100px;
     padding: 20px;
     display: flex;
     flex-direction: row;
 }
 
-label {
+.label_menu_tri {
     font-size: 1em;
-    margin-bottom: 10px;
-    display: block;
+    margin: 0px 20px 10px 0px;
+    font-weight: bold;
 }
 
-select {
-    width: 100%;
+.select_menu_tri {
+    width: 40%;
     padding: 10px;
     font-size: 1em;
     margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    border: none;
+    background-color: #901C1C;
+    color: #fff;
 }
 
-select:focus {
-    border-color: #007bff;
+.select_menu_tri:focus {
+    border-color: #DB8876;
     outline: none;
+}
+
+.select_menu_tri option {
+    padding: 23px 0px 23px 20px;
 }
 
 /* Modifications médias photographes */
 .photographer_media {
+    margin: 0 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
-    text-align: center;
+    place-items: center;
 }
 
-.media-item img {
+.media-item img, video {
     height: 300px;
     width: 350px;
     object-fit: cover;
     border-radius: 5px;
+}
+
+/* Modifications noms et likes des médias photographes */
+.name_like_media {
+    display: flex;
+    justify-content: space-between;
+    color: #901C1C;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+.name_like_media :nth-child(2) {
+    font-weight: 700;
+}
+
+.name_like_media :nth-child(2) i {
+    font-weight: 700;
+    margin-left: 5px;
 }

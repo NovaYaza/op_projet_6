@@ -15,15 +15,15 @@
     <main id="main">
       <div class="photograph-header">
         <div class="photographer_info"></div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
         <div class="photographer_imgprofil"></div>
       </div>
       <div class="div_menu_tri">
-        <form>
-          <label for="menu_tri">
+        <form class="form_menu_tri">
+          <label class="label_menu_tri" for="menu_tri">
             Trier par
           </label>
-          <select id="menu_tri" name="menu_tri">
+          <select class="select_menu_tri" id="menu_tri" name="menu_tri">
             <option value="popularite" selected>Popularité</option>
             <option value="date">Date</option>
             <option value="titre">Titre</option>
@@ -48,6 +48,7 @@
 			</div>
 		</div>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/factories/mediaElement.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

@@ -46,13 +46,11 @@ async function displayPhotographerInfo() {
 
     // Affichage des médias du photographe
     const mediaGalleryDiv = document.querySelector(".photographer_media");
-    mediaGalleryDiv.innerHTML = media.map(item => `
-        <article class="media-item">
-            <img src="assets/images/${photographer.id}/${item.image}" alt="${item.title}">
-            <p>${item.title}</p>
-            <p>Likes: ${item.likes}</p>
-        </article>
-    `).join('');
+    if (mediaGalleryDiv && media.length > 0) {
+        mediaGalleryDiv.innerHTML = media.map(item => createMediaElement(item, photographer.id)).join('');
+    } else {
+        console.error("Erreur : le média n'a pas été trouvé");
+    }
 
     {/* <video controls>
         <source src="assets/images/${photographer.id}/${item.video}" type="video/mp4">

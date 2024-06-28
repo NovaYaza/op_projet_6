@@ -1,3 +1,5 @@
+import { MediaFactory } from '../factories/mediaFactory.js';
+
 function getPhotographerIdFromURL() {
     const params = new URLSearchParams(window.location.search);
     return params.get('id');
@@ -47,18 +49,13 @@ async function displayPhotographerInfo() {
     // Affichage des médias du photographe
     const mediaGalleryDiv = document.querySelector(".photographer_media");
     if (mediaGalleryDiv && media.length > 0) {
-        mediaGalleryDiv.innerHTML = media.map(item => createMediaElement(item, photographer.id)).join('');
+        mediaGalleryDiv.innerHTML = media.map(item => {
+            const mediaInstance = MediaFactory.createMedia(item);
+            return mediaInstance.createMediaElement();
+        }).join('');
     } else {
-        console.error("Erreur : le média n'a pas été trouvé");
+        console.error("La div de la galerie multimédia est introuvable ou aucun média n'a été trouvé");
     }
-
-    {/* <video controls>
-        <source src="assets/images/${photographer.id}/${item.video}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> */}
-
-    {/* <p>Date: ${item.date}</p>
-    <p>Price: ${item.price}€</p> */}
 }
 
 // Appelle de la fonction pour afficher les informations du photographe lorsque la page a fini de charger

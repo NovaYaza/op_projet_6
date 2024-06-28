@@ -82,12 +82,14 @@ form input {
     width: 200px;
     object-fit: cover;
     border-radius: 100px;
+    margin-left: 100px;
 }
 
 .photograph-header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: 0px 10px 0px 10px;
 }
 
 .media_article h1 {
@@ -114,22 +116,18 @@ form input {
     margin: 20px 0px 50px 0px;
 }
 
-.div_menu_tri p {
-    margin-right: 20px;
-    font-weight: 700;
-}
-
 .form_menu_tri {
     max-width: 340px;
     margin: 0 100px;
     padding: 20px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .label_menu_tri {
     font-size: 1em;
-    margin: 0px 20px 10px 0px;
+    margin: 0px 20px 0px 0px;
     font-weight: bold;
 }
 
@@ -137,7 +135,6 @@ form input {
     width: 40%;
     padding: 10px;
     font-size: 1em;
-    margin-top: 10px;
     border-radius: 5px;
     border: none;
     background-color: #901C1C;
@@ -178,11 +175,16 @@ form input {
     margin-top: 5px;
 }
 
+.p_namemedia {
+    max-width: calc(100% - 80px);
+    word-wrap: break-word;
+    margin-right: 10px;
+}
+
 .name_like_media :nth-child(2) {
     font-weight: 700;
 }
 
 .name_like_media :nth-child(2) i {
-    font-weight: 700;
     margin-left: 5px;
 }

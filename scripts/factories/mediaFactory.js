@@ -1,4 +1,5 @@
-import { ImageMedia, VideoMedia } from './media.js';
+import { ImageMedia } from './imageMedia.js';
+import { VideoMedia } from './videoMedia.js';
 
 class MediaFactory {
     static createMedia(mediaData) {

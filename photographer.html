@@ -31,19 +31,42 @@
       </form>
       </div>
       <div class="photographer_media"></div>
+      <div class="photographer_encart"></div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <!-- <div class="name_photographer_modal"></div> -->
+          <img aria-label="Close Contact form" src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form id="form_contact" novalidate>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input 
+            aria-label="First name"
+            class="text-control"
+            type="text"
+            id="first"
+            name="first"/>
+            <label>Nom</label>
+						<input 
+            aria-label="Last name"
+            class="text-control"
+            type="text"
+            id="last"
+            name="last"/>
+            <label>Email</label>
+						<input 
+            aria-label="Email"
+            class="text-control"
+            type="email"
+            id="email"
+            name="email"/>
+            <label>Votre message</label>
+						<textarea aria-label="Your message" class="text-area" id="message_personnalisé" name="message_personnalisé"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button aria-label="Send" type="submit" class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>

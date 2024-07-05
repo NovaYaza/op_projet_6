@@ -24,6 +24,25 @@ async function displayPhotographerInfo() {
         return;
     }
 
+    // Affichage du nom du photographe dans la modale
+    try {
+        const photographerNameModale = document.querySelector(".name_photographer_modal");
+        if (photographerNameModale) {
+            photographerNameModale.innerHTML = `
+                <h2>${photographer.name}</h2>
+            `;
+        }
+
+        // Ajout de l'aria-label sur la modale
+        const contactModalDiv = document.getElementById('contact_modal');
+        if (contactModalDiv) {
+            contactModalDiv.setAttribute('aria-label', `Contact Me ${photographer.name}`);
+        }
+    } catch (error) {
+        console.error("Erreur d'affichage du nom du photographe dans la modal:", error);
+    }
+
+
     // Filtrer les médias du photographe
     const media = data.media.filter(m => m.photographerId == photographerId);
 
@@ -55,6 +74,11 @@ async function displayPhotographerInfo() {
         }).join('');
     } else {
         console.error("La div de la galerie multimédia est introuvable ou aucun média n'a été trouvé");
+    }
+
+    const infosEncart = document.querySelector(".photographer_encart");
+    if (infosEncart) {
+        infosEncart.innerHTML = `${photographer.price}€ / jour`;
     }
 }
 

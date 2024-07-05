@@ -1,5 +1,19 @@
+/* Modifications style tabulation */
+:focus-visible {
+    outline: 6px dashed #C21E17;
+}
+
+/* Modifications modal */
 #contact_modal {
     display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    margin-top: 6vh;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
 }
 
 .photograph-header {
@@ -73,6 +87,20 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+form textarea {
+    width: 100% !important;
+    height: 170px !important;
+    resize: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 2em;
+}
+
+.text-control {
+    font-size: 2em;
 }
 
 /*** Modifications page photoghraphes ***/
@@ -141,13 +169,8 @@ form input {
     color: #fff;
 }
 
-.select_menu_tri:focus {
-    border-color: #DB8876;
-    outline: none;
-}
-
 .select_menu_tri option {
-    padding-top: 10px;
+    padding-top: 100px;
 }
 
 /* Modifications médias photographes */
@@ -187,4 +210,19 @@ form input {
 
 .name_like_media :nth-child(2) i {
     margin-left: 5px;
+}
+
+/* Modifications infos encart photographes */
+.photographer_encart {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 40px;
+    background-color: #DB8876;
+    color: #000;
+    font-weight: 700;
+    padding: 15px 30px 10px;
+    font-size: 1.2em;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 1000;
 }

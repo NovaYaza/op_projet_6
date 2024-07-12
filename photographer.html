@@ -12,7 +12,7 @@
     <header>
       <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <div class="photographer_info"></div>
         <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
@@ -33,15 +33,17 @@
       <div class="photographer_media"></div>
       <div class="photographer_encart"></div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalContactPhotographer">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <!-- <div class="name_photographer_modal"></div> -->
-          <img aria-label="Close Contact form" src="assets/icons/close.svg" onclick="closeModal()" />
+				<header class="header_modal">
+          <div class="div_header_modal">
+            <h2>Contactez-moi</h2>
+            <img id="img_closeModal" tabindex="0" aria-label="Close Contact form" src="assets/icons/close.svg" onclick="closeModal()" />
+          </div>
+          <div class="name_photographer_modal"></div>
         </header>
 				<form id="form_contact" novalidate>
-					<div>
+					<div class="div_form">
 						<label>Prénom</label>
 						<input 
             aria-label="First name"
@@ -49,6 +51,7 @@
             type="text"
             id="first"
             name="first"/>
+            <div class="formData"></div>
             <label>Nom</label>
 						<input 
             aria-label="Last name"
@@ -56,6 +59,7 @@
             type="text"
             id="last"
             name="last"/>
+            <div class="formData"></div>
             <label>Email</label>
 						<input 
             aria-label="Email"
@@ -63,8 +67,10 @@
             type="email"
             id="email"
             name="email"/>
+            <div class="formData"></div>
             <label>Votre message</label>
-						<textarea aria-label="Your message" class="text-area" id="message_personnalisé" name="message_personnalisé"></textarea>
+						<textarea aria-label="Your message" class="text-area" id="message_personnalise" name="message_personnalisé"></textarea>
+            <div class="formData"></div>
 					</div>
           <button aria-label="Send" type="submit" class="contact_button">Envoyer</button>
 				</form>

@@ -4,13 +4,25 @@
 }
 
 /* Modifications modal */
+.header_modal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 90px;
+}
+
+.div_header_modal {
+    display: flex;
+    justify-content: space-between; 
+}
+
 #contact_modal {
     display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
-    margin-top: 6vh;
+    margin-top: 1vh;
     height: 100%;
     width: 100%;
     overflow: auto;
@@ -74,7 +86,7 @@ form label {
     font-size: 36px;
 }
 
-form div {
+form .div_form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -101,6 +113,23 @@ form textarea {
 
 .text-control {
     font-size: 2em;
+}
+
+/* Modifications messages d'erreur dans la modale */
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 1.2em;
+    color: #B10A03;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+}
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
 }
 
 /*** Modifications page photoghraphes ***/
@@ -225,4 +254,10 @@ form textarea {
     font-size: 1.2em;
     border-radius: 5px 5px 0px 0px;
     z-index: 1000;
+    display: flex;
+}
+
+.photographer_encart i {
+    font-weight: 700;
+    margin-right: 60px;
 }

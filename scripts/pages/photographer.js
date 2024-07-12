@@ -46,6 +46,9 @@ async function displayPhotographerInfo() {
     // Filtrer les médias du photographe
     const media = data.media.filter(m => m.photographerId == photographerId);
 
+    // Tri des médias par popularité par défaut
+    media.sort((a, b) => b.likes - a.likes);
+
     // Affichage des infos du photographe
     const photographerInfoDiv = document.querySelector(".photographer_info");
     photographerInfoDiv.innerHTML = `
@@ -65,21 +68,46 @@ async function displayPhotographerInfo() {
     <img src="${picture}" alt="${photographer.name}">
     `;
 
-    // Affichage des médias du photographe
-    const mediaGalleryDiv = document.querySelector(".photographer_media");
-    if (mediaGalleryDiv && media.length > 0) {
-        mediaGalleryDiv.innerHTML = media.map(item => {
-            const mediaInstance = MediaFactory.createMedia(item);
-            return mediaInstance.createMediaElement();
-        }).join('');
-    } else {
-        console.error("La div de la galerie multimédia est introuvable ou aucun média n'a été trouvé");
+    // Ajout d'une fonction permettant de trier les médias
+    function triMedia(media) {
+        // Affichage des médias du photographe
+        const mediaGalleryDiv = document.querySelector(".photographer_media");
+        if (mediaGalleryDiv && media.length > 0) {
+            mediaGalleryDiv.innerHTML = media.map(item => {
+                const mediaInstance = MediaFactory.createMedia(item);
+                return mediaInstance.createMediaElement();
+            }).join('');
+        } else {
+            console.error("La div de la galerie multimédia est introuvable ou aucun média n'a été trouvé");
+        }
     }
 
-    const infosEncart = document.querySelector(".photographer_encart");
-    if (infosEncart) {
-        infosEncart.innerHTML = `${photographer.price}€ / jour`;
+    triMedia(media);
+
+    // Trie des médias
+    const menuTri = document.getElementById('menu_tri');
+    if (menuTri) {
+        menuTri.addEventListener('change', (event) => {
+            const sortBy = event.target.value;
+            if (sortBy === 'popularite') {
+                media.sort((a, b) => b.likes - a.likes);
+            } else if (sortBy === 'date') {
+                media.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else if (sortBy === 'titre') {
+                media.sort((a, b) => a.title.localeCompare(b.title));
+            }
+            triMedia(media);
+        });
     }
+
+    // Affichage des likes et du prix du photographe dans l'encart de bas de page
+    const infosEncart = document.querySelector(".photographer_encart");
+    const totalLikes = media.reduce((sum, item) => sum + item.likes, 0);
+    infosEncart.innerHTML = `
+    <p>${totalLikes} <i class="fa-regular fa-heart"></i></p>
+    <p>${photographer.price}€ / jour</p>
+    `;
+    
 }
 
 // Appelle de la fonction pour afficher les informations du photographe lorsque la page a fini de charger

@@ -1,58 +1,124 @@
-/* // Fonction pour ouvrir la lightbox avec le média sélectionné
-function openLightbox(mediaPath, type, title) {
+let mediaList = [];
+let currentMediaIndex = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Permet de fermer la lightbox en cliquant sur Entrer sur la croix
+    const closeButton = document.getElementById('close_lightbox');
+    closeButton.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            closeLightbox();
+        }
+    });
+
+    // Permet de fermer la lightbox en cliquant sur Echap
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+});
+
+// Permet d'enfermer les tabulations dans la lightbox
+function trapTabKeyLightbox(e) {
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.querySelector('.lightbox-image');
-    const lightboxVideo = document.querySelector('.lightbox-video');
-    const lightboxCaption = document.querySelector('.lightbox-caption');
-    
-    if (type === 'image') {
-        lightboxImage.src = mediaPath;
-        lightboxImage.style.display = 'block';
-        lightboxVideo.style.display = 'none';
-    } else if (type === 'video') {
-        lightboxVideo.querySelector('source').src = mediaPath;
-        lightboxVideo.load();
-        lightboxVideo.style.display = 'block';
-        lightboxImage.style.display = 'none';
+    const firstFocusableElement = lightbox.querySelectorAll(focusableElements)[0];
+    const focusableContent = lightbox.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    if (e.key === 'Tab') {
+        if (e.shiftKey) {
+            if (document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus();
+                e.preventDefault();
+            }
+        } else {
+            if (document.activeElement === lastFocusableElement) {
+                firstFocusableElement.focus();
+                e.preventDefault();
+            }
+        }
     }
+}
+
+// Fonction pour ouvrir la lightbox avec une liste de médias
+function openLightbox(mediaElement, mediaArray) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const main = document.getElementById("main");
+
+    lightbox.setAttribute('aria-hidden', 'false');
+    main.setAttribute('aria-hidden', 'true');
     
-    lightboxCaption.textContent = title;
-    lightbox.classList.remove('hidden');
+    // Mettre à jour la liste des médias et l'index actuel
+    mediaList = mediaArray;
+    currentMediaIndex = mediaArray.indexOf(mediaElement);
+
+    // Effacer le contenu précédent de la lightbox
+    lightboxContent.innerHTML = '';
+
+    // Créer un clone de l'élément média cliqué et l'ajouter à la lightbox
+    const mediaClone = mediaElement.cloneNode(true);
+    lightboxContent.appendChild(mediaClone);
+
+    // Afficher les contrôles si c'est une vidéo
+    if (mediaClone.tagName.toUpperCase() === 'VIDEO') {
+        mediaClone.setAttribute('controls', 'controls');
+    }
+
+    // Afficher la lightbox
+    lightbox.style.display = 'flex';
+
+    const firstInput = document.getElementById('lightbox-next');
+    firstInput.focus();
+
+    lightbox.addEventListener('keydown', trapTabKeyLightbox);
 }
 
 // Fonction pour fermer la lightbox
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
-    lightbox.classList.add('hidden');
+    const main = document.getElementById("main");
+    lightbox.style.display = 'none';
+    lightbox.setAttribute('aria-hidden', 'true');
+    main.setAttribute('aria-hidden', 'false');
+
+    lightbox.removeEventListener('keydown', trapTabKeyLightbox);
 }
 
-// // Ajout d'événements aux item des médias
-document.addEventListener('DOMContentLoaded', () => {
-    const mediaItems = document.querySelectorAll('.media-item img, .media-item video');
-    
-    mediaItems.forEach(mediaItem => {
-        mediaItem.addEventListener('click', (e) => {
-            const mediaPath = e.target.src;
-            const mediaType = e.target.tagName.toLowerCase();
-            const mediaTitle = e.target.closest('.media-item').querySelector('p').textContent;
+// Fonction pour afficher le média précédent
+function showPrevMedia() {
+    if (mediaList.length > 0) {
+        currentMediaIndex = (currentMediaIndex - 1 + mediaList.length) % mediaList.length;
+        updateLightboxContent();
+    }
+}
 
-            openLightbox(mediaPath, mediaType, mediaTitle);
-        });
-    });
+// Fonction pour afficher le média suivant
+function showNextMedia() {
+    if (mediaList.length > 0) {
+        currentMediaIndex = (currentMediaIndex + 1) % mediaList.length;
+        updateLightboxContent();
+    }
+}
 
-    // Ajout d'événement au bouton de fermeture
-    const closeButton = document.querySelector('.lightbox .close');
-    if (closeButton) {
-        closeButton.addEventListener('click', closeLightbox);
+// Fonction pour mettre à jour le contenu de la lightbox
+function updateLightboxContent() {
+    const lightboxContent = document.getElementById('lightbox-content');
+    lightboxContent.innerHTML = '';
+
+    const mediaClone = mediaList[currentMediaIndex].cloneNode(true);
+
+    // Afficher les contrôles si c'est une vidéo lors de la navigation entre les médias
+    if (mediaClone.tagName.toUpperCase() === 'VIDEO') {
+        mediaClone.setAttribute('controls', 'controls');
     }
 
-    // Ajout d'événement pour fermer la lightbox lorsque l'on clique en dehors de la lightbox
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-    }
-}); */
+    lightboxContent.appendChild(mediaClone);
+}
+
+// Ajouter des écouteurs d'événements aux boutons de navigation
+document.getElementById('close_lightbox').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-prev').addEventListener('click', showPrevMedia);
+document.getElementById('lightbox-next').addEventListener('click', showNextMedia);

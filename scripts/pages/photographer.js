@@ -144,26 +144,29 @@ async function displayPhotographerInfo() {
         // Vérifier si l'élément cliqué est une image ou une vidéo
         const tagName = clickedElement.tagName.toUpperCase();
         if (tagName === 'IMG' || tagName === 'VIDEO') {
-            console.log('Image ou Video clicked');
-            // Exécuter le code pour la lightbox
+            console.log('Image ou Video cliqué');
+            
+            // Passer la liste des médias à openLightbox
+            const mediaArray = Array.from(document.querySelectorAll('.photographer_media img, .photographer_media video'));
+            openLightbox(clickedElement, mediaArray);
         }
 
-        // Vérifier si l'élément cliqué est le cœur
+        // Vérifier si l'élément cliqué est le coeur
         if (clickedElement.classList.contains('fa-heart')) {
-            console.log('Like button clicked');
+            console.log('Like button cliqué');
             // Récupérer l'élément qui affiche le nombre de likes (assumant qu'il a la classe 'likes-count')
             const likesCountElement = clickedElement.closest('.name_like_media').querySelector('.likes-count');
             if (likesCountElement) {
                 // Récupérer le nombre actuel de likes
                 let currentLikes = parseInt(likesCountElement.textContent);
-                // Vérifier si le cœur est plein ou vide
+                // Vérifier si le coeur est plein ou vide
                 if (clickedElement.classList.contains('fa-solid')) {
-                    // Si le cœur est plein, le rendre vide et décrémenter les likes
+                    // Si le coeur est plein, le rendre vide et décrémenter les likes
                     clickedElement.classList.remove('fa-solid');
                     clickedElement.classList.add('fa-regular');
                     currentLikes--;
                 } else {
-                    // Si le cœur est vide, le rendre plein et incrémenter les likes
+                    // Si le coeur est vide, le rendre plein et incrémenter les likes
                     clickedElement.classList.remove('fa-regular');
                     clickedElement.classList.add('fa-solid');
                     currentLikes++;
@@ -188,7 +191,7 @@ function updateTotalLikes() {
 
     const infosEncart = document.querySelector(".photographer_encart");
     infosEncart.innerHTML = `
-        <p>${totalLikes} <i class="fa-regular fa-heart"></i></p>
+        <p class="total_likes_encart">${totalLikes} <i class="fa-regular fa-heart"></i></p>
         <p>${photographer.price}€ / jour</p>
     `;
 }

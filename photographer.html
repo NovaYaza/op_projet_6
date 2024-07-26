@@ -76,7 +76,15 @@
 				</form>
 			</div>
 		</div>
-    <div id="lightbox" class="lightbox hidden">
+    <div id="lightbox" aria-hidden="true" style="display:none;" aria-label="image closeup view">
+      <span id="close_lightbox" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></span>
+      <button id="lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+      <div id="lightbox-content">
+        <p id="lightbox-image-infos"></p>
+      </div>
+      <button id="lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <!-- <div id="lightbox" class="lightbox hidden">
       <span class="close">&times;</span>
       <div class="lightbox-content">
           <img class="lightbox-image" alt="">
@@ -90,7 +98,7 @@
           <span class="prev">&laquo;</span>
           <span class="next">&raquo;</span>
       </div>
-    </div>
+    </div> -->
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/factories/mediaFactory.js"></script>
     <script type="module" src="/scripts/factories/media.js"></script>

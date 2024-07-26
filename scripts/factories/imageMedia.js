@@ -8,7 +8,10 @@ class ImageMedia extends Media {
                 <a aria-label="${this.title}, closeup view"><img src="${mediaPath}" alt="${this.title}" tabindex="0"></a>
                 <div class="name_like_media">
                     <p class="p_namemedia">${this.title}</p>
-                    <p>${this.likes} <i class="fa-regular fa-heart" aria-label="likes" role="button" tabindex="0"></i></p>
+                    <div class="nblikes_heart">
+                        <p class="likes-count">${this.likes}</p>
+                        <i class="fa-regular fa-heart" id="fill_heart" aria-label="likes" role="button" tabindex="0" ></i>
+                    </div>
                 </div>
             </div>
         `;

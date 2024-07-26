@@ -30,55 +30,71 @@
         </select>
       </form>
       </div>
-      <div class="photographer_media"></div>
+      <div class="photographer_media" id="lightbox_likes"></div>
       <div class="photographer_encart"></div>
     </main>
     <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalContactPhotographer">
 			<div class="modal">
 				<header class="header_modal">
           <div class="div_header_modal">
-            <h2>Contactez-moi</h2>
+            <h2 id="modalContactPhotographer">Contactez-moi</h2>
             <img id="img_closeModal" tabindex="0" aria-label="Close Contact form" src="assets/icons/close.svg" onclick="closeModal()" />
           </div>
           <div class="name_photographer_modal"></div>
         </header>
 				<form id="form_contact" novalidate>
 					<div class="div_form">
-						<label>Prénom</label>
-						<input 
-            aria-label="First name"
+						<label for="firstname">Prénom</label>
+						<input
+            aria-required="true"
             class="text-control"
             type="text"
-            id="first"
+            id="firstname"
             name="first"/>
             <div class="formData"></div>
-            <label>Nom</label>
-						<input 
-            aria-label="Last name"
+            <label for="lastname">Nom</label>
+						<input
+            aria-required="true"
             class="text-control"
             type="text"
-            id="last"
+            id="lastname"
             name="last"/>
             <div class="formData"></div>
-            <label>Email</label>
-						<input 
-            aria-label="Email"
+            <label for="email">Email</label>
+						<input
+            aria-required="true"
             class="text-control"
             type="email"
             id="email"
             name="email"/>
             <div class="formData"></div>
-            <label>Votre message</label>
-						<textarea aria-label="Your message" class="text-area" id="message_personnalise" name="message_personnalisé"></textarea>
+            <label for="message_personnalise">Votre message</label>
+						<textarea aria-required="true" class="text-area" id="message_personnalise" name="message_personnalisé"></textarea>
             <div class="formData"></div>
 					</div>
           <button aria-label="Send" type="submit" class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <div id="lightbox" class="lightbox hidden">
+      <span class="close">&times;</span>
+      <div class="lightbox-content">
+          <img class="lightbox-image" alt="">
+          <video class="lightbox-video" controls>
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+          <div class="lightbox-caption"></div>
+      </div>
+        <div class="lightbox-navigation">
+          <span class="prev">&laquo;</span>
+          <span class="next">&raquo;</span>
+      </div>
+    </div>
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/factories/mediaFactory.js"></script>
     <script type="module" src="/scripts/factories/media.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

@@ -60,7 +60,7 @@ function displayModal() {
         main.style.opacity = 0.2;
     }
 
-    const firstInput = document.getElementById('first');
+    const firstInput = document.getElementById('firstname');
     firstInput.focus();
 
     modal.addEventListener('keydown', trapTabKey);
@@ -68,20 +68,23 @@ function displayModal() {
 
 // Fonction permettant de fermer la modale
 function closeModal() {
-    document.getElementById('form_contact').reset();
+    document.getElementById('form_contact').reset(); // Reset des éléments rentrés par l'utilisateur lors de la fermeture de la modal
+    // Nettoyage des messages d'erreurs du formulaire lorsque l'on ferme la modale
+    resetErrorMessages();
     
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
 
     modal.style.display = "none";
-    modal.setAttribute('aria-hidden', 'false');
-    main.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('aria-hidden', 'true');
+    main.setAttribute('aria-hidden', 'false');
 
     if (modal.style.display = "none") {
         main.style.opacity = 1;
     }
 
     modal.removeEventListener('keydown', trapTabKey);
+
 }
 
 //Paramètres lors du submit de l'utilisateur
@@ -90,8 +93,8 @@ function validate() {
     let isValid = true;
   
     //verification
-    const eltfirstName = document.getElementById('first');
-    const eltlastName = document.getElementById('last');
+    const eltfirstName = document.getElementById('firstname');
+    const eltlastName = document.getElementById('lastname');
     const eltEmail = document.getElementById('email');
     const eltTextArea = document.getElementById('message_personnalise');
     const testEspacefirstName = eltfirstName.value.trim();
@@ -142,18 +145,27 @@ function validate() {
     return isValid;
 }
 
-//Affichages des erreurs
+// Affichages des erreurs
 function showError(element, message) {
     const formData = element.nextElementSibling;
     formData.setAttribute('data-error', message);
     formData.setAttribute('data-error-visible', 'true');
 }
 
-//Nettoyage des messages d'erreurs formulaire
+// Nettoyage des messages d'erreurs du formulaire si les infos dans les input sont valides
 function clearErrorMessage(element) {
     const formData = element.nextElementSibling;
     formData.removeAttribute('data-error');
     formData.removeAttribute('data-error-visible');
+}
+
+// Fonction pour nettoyer les messages d'erreurs du formulaire lorsque l'on ferme la modale
+function resetErrorMessages() {
+    const formDataElements = document.querySelectorAll('.formData');
+    formDataElements.forEach(formData => {
+        formData.removeAttribute('data-error');
+        formData.removeAttribute('data-error-visible');
+    });
 }
 
 // Récupération des infos rentrés par l'utilisateur
@@ -162,8 +174,8 @@ document.getElementById('form_contact').addEventListener('submit', function(even
 
     if (validate()) {
     // Récupère les valeurs des champs du formulaire
-    let firstName = document.getElementById('first').value;
-    let lastName = document.getElementById('last').value;
+    let firstName = document.getElementById('firstname').value;
+    let lastName = document.getElementById('lastname').value;
     let email = document.getElementById('email').value;
     let message = document.getElementById('message_personnalise').value;
 

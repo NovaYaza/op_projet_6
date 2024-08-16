@@ -5,8 +5,8 @@ class VideoMedia extends Media {
         const mediaPath = `assets/images/${this.photographerId}/${this.video}`;
         return `
             <div class="media-item">
-                <a tabindex="0" aria-label="${this.title}, closeup view">
-                    <video>
+                <a aria-label="${this.title}, closeup view">
+                    <video tabindex="0" data-title="${this.title}">
                         <source src="${mediaPath}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>

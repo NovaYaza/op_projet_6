@@ -52,11 +52,11 @@ function displayModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
 
-	modal.style.display === "block";
+	modal.style.display = "block";
     modal.setAttribute('aria-hidden', 'false');
     main.setAttribute('aria-hidden', 'true');
 
-    if (modal.style.display = "block") {
+    if (modal.style.display === "block") {
         main.style.opacity = 0.2;
     }
 
@@ -79,7 +79,7 @@ function closeModal() {
     modal.setAttribute('aria-hidden', 'true');
     main.setAttribute('aria-hidden', 'false');
 
-    if (modal.style.display = "none") {
+    if (modal.style.display === "none") {
         main.style.opacity = 1;
     }
 

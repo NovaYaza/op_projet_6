@@ -46,6 +46,7 @@ function trapTabKeyLightbox(e) {
 function openLightbox(mediaElement, mediaArray) {
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxTitle = document.getElementById('lightbox-image-infos');
     const main = document.getElementById("main");
 
     lightbox.setAttribute('aria-hidden', 'false');
@@ -57,6 +58,7 @@ function openLightbox(mediaElement, mediaArray) {
 
     // Effacer le contenu précédent de la lightbox
     lightboxContent.innerHTML = '';
+    lightboxTitle.innerHTML = '';
 
     // Créer un clone de l'élément média cliqué et l'ajouter à la lightbox
     const mediaClone = mediaElement.cloneNode(true);
@@ -67,13 +69,23 @@ function openLightbox(mediaElement, mediaArray) {
         mediaClone.setAttribute('controls', 'controls');
     }
 
+    // Ajouter le titre du média
+    const title = mediaElement.getAttribute('data-title');
+    if (title) {
+        lightboxTitle.textContent = title;
+    }
+
     // Afficher la lightbox
     lightbox.style.display = 'flex';
 
+    // Mettre le focus sur le bouton "next"
     const firstInput = document.getElementById('lightbox-next');
     firstInput.focus();
 
     lightbox.addEventListener('keydown', trapTabKeyLightbox);
+
+    // Ajouter des écouteurs pour les flèches gauche et droite
+    document.addEventListener('keydown', handleArrowKeys);
 }
 
 // Fonction pour fermer la lightbox
@@ -85,6 +97,9 @@ function closeLightbox() {
     main.setAttribute('aria-hidden', 'false');
 
     lightbox.removeEventListener('keydown', trapTabKeyLightbox);
+
+    // Supprimer les écouteurs pour les flèches gauche et droite
+    document.removeEventListener('keydown', handleArrowKeys);
 }
 
 // Fonction pour afficher le média précédent
@@ -106,7 +121,9 @@ function showNextMedia() {
 // Fonction pour mettre à jour le contenu de la lightbox
 function updateLightboxContent() {
     const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxTitle = document.getElementById('lightbox-image-infos');
     lightboxContent.innerHTML = '';
+    lightboxTitle.innerHTML = '';
 
     const mediaClone = mediaList[currentMediaIndex].cloneNode(true);
 
@@ -116,6 +133,21 @@ function updateLightboxContent() {
     }
 
     lightboxContent.appendChild(mediaClone);
+
+    // Ajouter le titre du média
+    const title = mediaList[currentMediaIndex].getAttribute('data-title');
+    if (title) {
+        lightboxTitle.textContent = title;
+    }
+}
+
+// Fonction pour gérer les touches de flèche gauche et droite
+function handleArrowKeys(event) {
+    if (event.key === 'ArrowLeft') {
+        showPrevMedia();
+    } else if (event.key === 'ArrowRight') {
+        showNextMedia();
+    }
 }
 
 // Ajouter des écouteurs d'événements aux boutons de navigation

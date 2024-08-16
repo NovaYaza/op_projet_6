@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -38,7 +38,7 @@
 				<header class="header_modal">
           <div class="div_header_modal">
             <h2 id="modalContactPhotographer">Contactez-moi</h2>
-            <img id="img_closeModal" tabindex="0" aria-label="Close Contact form" src="assets/icons/close.svg" onclick="closeModal()" />
+            <img id="img_closeModal" tabindex="0" aria-label="Close Contact form" alt="croix" src="assets/icons/close.svg" onclick="closeModal()" />
           </div>
           <div class="name_photographer_modal"></div>
         </header>
@@ -77,11 +77,10 @@
 			</div>
 		</div>
     <div id="lightbox" aria-hidden="true" style="display:none;" aria-label="image closeup view">
-      <span id="close_lightbox" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></span>
+      <span id="close_lightbox" aria-label="Close dialog" tabindex="0"><i class="fa-solid fa-xmark"></i></span>
       <button id="lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-      <div id="lightbox-content">
-        <p id="lightbox-image-infos"></p>
-      </div>
+        <div id="lightbox-content"></div>
+        <div id="lightbox-image-infos"></div>
       <button id="lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
     <!-- <div id="lightbox" class="lightbox hidden">

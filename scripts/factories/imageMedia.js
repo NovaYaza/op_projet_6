@@ -5,7 +5,7 @@ class ImageMedia extends Media {
         const mediaPath = `assets/images/${this.photographerId}/${this.image}`;
         return `
             <div class="media-item">
-                <a aria-label="${this.title}, closeup view"><img src="${mediaPath}" alt="${this.title}" tabindex="0"></a>
+                <a aria-label="${this.title}, closeup view"><img src="${mediaPath}" alt="${this.title}" data-title="${this.title}" tabindex="0"></a>
                 <div class="name_like_media">
                     <p class="p_namemedia">${this.title}</p>
                     <div class="nblikes_heart">
@@ -17,8 +17,5 @@ class ImageMedia extends Media {
         `;
     }
 }
-
-{/* <p>Date: ${this.date}</p>
-<p>Price: ${this.price}€</p> */}
 
 export { ImageMedia };

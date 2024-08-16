@@ -59,8 +59,6 @@ async function displayPhotographerInfo() {
     </article>
     `;
 
-    {/* <p>Prix: ${photographer.price}€/jour</p> */}
-
     // Affichage de la photo de profil du photographe
     const photographerInfoImgDiv = document.querySelector(".photographer_imgprofil");
     const picture = `assets/photographers/${photographer.portrait}`;
@@ -76,35 +74,13 @@ async function displayPhotographerInfo() {
             mediaGalleryDiv.innerHTML = media.map(item => {
                 const mediaInstance = MediaFactory.createMedia(item);
                 return mediaInstance.createMediaElement();
-                /* const mediaElement = mediaInstance.createMediaElement();
-
-                // Ajout de data aux médias
-                const mediaType = item.image ? 'image' : 'video';
-                const mediaPath = `assets/images/${item.photographerId}/${item.image || item.video}`;
-                const mediaTitle = item.title;
-                
-                return `
-                    <div class="media-item" data-type="${mediaType}" data-path="${mediaPath}" data-title="${mediaTitle}">
-                        ${mediaElement}
-                    </div>
-                `; */
             }).join('');
         } else {
             console.error("La div de la galerie multimédia est introuvable ou aucun média n'a été trouvé");
         }
 
-        /* // Ajout d'événements aux médias pour la lightbox
-        const mediaItems = document.querySelectorAll('.media-item');
-        mediaItems.forEach(mediaItem => {
-            mediaItem.addEventListener('click', (e) => {
-                const mediaPath = mediaItem.getAttribute('data-path');
-                const mediaType = mediaItem.getAttribute('data-type');
-                const mediaTitle = mediaItem.getAttribute('data-title');
-
-                openLightbox(mediaPath, mediaType, mediaTitle);
-            });
-        }); */
-    
+        // Mettre à jour le total des likes dans l'encart après avoir trié les médias
+        updateTotalLikes();
     }
 
     triMedia(media);
@@ -139,6 +115,7 @@ async function displayPhotographerInfo() {
     // Vérifier si l'événement est un clic ou un appui sur la touche "Entrée"
     if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Enter')) {
         // Récupérer l'élément cliqué ou sélectionné avec "Entrée"
+        event.preventDefault();
         const clickedElement = event.target;
 
         // Vérifier si l'élément cliqué est une image ou une vidéo

@@ -220,6 +220,10 @@ form textarea {
     border-radius: 5px;
 }
 
+.media-item img, video:hover {
+    cursor: pointer;
+}
+
 /* Modifications noms et likes des médias photographes */
 .name_like_media {
     display: flex;
@@ -305,12 +309,26 @@ form textarea {
     object-fit: cover;
 }
 
+#lightbox-image-infos {
+    color: #901C1C;
+    font-size: 1.5em;
+}
+
 /* #lightbox-image-infos {
     margin-top: 10px;
     font-size: 16px;
     color: #333;
     text-align: center; 
+    background-color: #B10A03;
 } */
+
+/* #lightbox-image-infos {
+    all: unset;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+}  */
 
 /* Boutons de navigation dans la lightbox */
 #lightbox-prev, #lightbox-next {

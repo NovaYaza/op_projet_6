@@ -243,7 +243,7 @@ form textarea {
     font-weight: 700;
 }
 
-.name_like_media :nth-child(2) i {
+.name_like_media :nth-child(2) em {
     margin-left: 10px;
 }
 
@@ -272,7 +272,7 @@ form textarea {
     display: flex;
 }
 
-.photographer_encart i {
+.photographer_encart em {
     font-weight: 700;
     margin-right: 60px;
     cursor: default;
@@ -298,7 +298,7 @@ form textarea {
     display: flex;
 }
 
-#lightbox-content {
+.medias-content {
     margin: 200px;
 }
 
@@ -313,22 +313,6 @@ form textarea {
     color: #901C1C;
     font-size: 1.5em;
 }
-
-/* #lightbox-image-infos {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-    text-align: center; 
-    background-color: #B10A03;
-} */
-
-/* #lightbox-image-infos {
-    all: unset;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 18px;
-    color: #000;
-}  */
 
 /* Boutons de navigation dans la lightbox */
 #lightbox-prev, #lightbox-next {

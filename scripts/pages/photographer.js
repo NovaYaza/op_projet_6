@@ -168,7 +168,7 @@ function updateTotalLikes() {
 
     const infosEncart = document.querySelector(".photographer_encart");
     infosEncart.innerHTML = `
-        <p class="total_likes_encart">${totalLikes} <i class="fa-regular fa-heart"></i></p>
+        <p class="total_likes_encart">${totalLikes} <em class="fa-regular fa-heart"></em></p>
         <p>${photographer.price}€ / jour</p>
     `;
 }

@@ -43,7 +43,7 @@ function trapTabKeyLightbox(e) {
 }
 
 // Fonction pour ouvrir la lightbox avec une liste de médias
-function openLightbox(mediaElement, mediaArray) {
+function openLightbox(mediaElement, mediaArray) { // eslint-disable-line
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
     const lightboxTitle = document.getElementById('lightbox-image-infos');

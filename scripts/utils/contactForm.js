@@ -48,7 +48,7 @@ function trapTabKey(e) {
 }
 
 // Fonction permettant d'ouvrir la modale
-function displayModal() {
+function displayModal() { // eslint-disable-line
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
 

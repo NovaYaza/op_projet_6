@@ -1,3 +1,4 @@
+/* eslint-disable sourceType: module */
 import { MediaFactory } from '../factories/mediaFactory.js';
 
 function getPhotographerIdFromURL() {
@@ -43,7 +44,7 @@ async function displayPhotographerInfo() {
     }
 
 
-    // Filtrer les médias du photographe
+    // Filtrer les médias du photographe choisi
     const media = data.media.filter(m => m.photographerId == photographerId);
 
     // Tri des médias par popularité par défaut

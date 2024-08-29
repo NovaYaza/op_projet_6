@@ -1,4 +1,4 @@
-function photographerTemplate(data) {
+function photographerTemplate(data) { // eslint-disable-line
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
